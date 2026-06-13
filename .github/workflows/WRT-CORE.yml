@@ -161,7 +161,14 @@ jobs:
 
           $GITHUB_WORKSPACE/Scripts/Packages.sh
           $GITHUB_WORKSPACE/Scripts/Handles.sh
-
+          
+      - name: Start SSH for debugging
+        if: ${{ failure() || inputs.WRT_DEBUG == 'true' }}
+        uses: P3TERX/ssh2actions@main
+        with:
+          mode: tmate
+          timeout: '30m'
+          
       - name: Custom Settings
         run: |
           cd ./wrt/
