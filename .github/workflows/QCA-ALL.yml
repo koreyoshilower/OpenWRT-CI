@@ -23,7 +23,11 @@ on:
         default: 'false'
         required: false
         type: boolean
-
+      DEBUG:
+        description: '编译后启动 SSH 调试会话（超时30分钟）'
+        default: 'false'
+        required: false
+        type: boolean
 #CI权限
 permissions: write-all
 
@@ -66,3 +70,5 @@ jobs:
       WRT_PACKAGE: ${{inputs.PACKAGE}}
       #仅输出配置文件
       WRT_TEST: ${{inputs.TEST}}
+      
+      WRT_DEBUG: ${{inputs.DEBUG}}
